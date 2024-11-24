@@ -6,8 +6,7 @@ import { FaSearch } from 'react-icons/fa';
 import { MdBookmark, MdDateRange} from 'react-icons/md';
 import { TbCurrentLocation } from 'react-icons/tb';
 import data from '../components/data';
-import { ImSpinner8 } from 'react-icons/im';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
 
