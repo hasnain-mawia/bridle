@@ -8,6 +8,16 @@ import { TbCurrentLocation } from 'react-icons/tb';
 import data from '../components/data';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { Button } from '@/components/ui/button';
+import Autoplay from 'embla-carousel-autoplay';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
 
 
 
@@ -29,8 +39,14 @@ function page() {
       <Link className='flex items-center gap-5 hover:bg-white hover:text-[#731CEB] hover:border-b-[3px] hover:border-[#731CEB] border-b-[3px] border-transparent p-2' href="">Saved Events (2) </Link>
       </div>
         <h3 className='text-[22px] font-semibold p-3'>Feature Events</h3>
-      <div className='px-2 gap-2 mx-auto grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4'>
-        
+
+      <Carousel plugins={[
+        Autoplay({
+          delay: 2000,
+        }),
+      ]}>
+      <CarouselContent>
+      <CarouselItem className="basis-1/4">
         {/* --------- Feature Section [Start] ---------- */}
         <div className='flex justify-between border-[#dadada] border-[2px] rounded-lg gap-1 my-2'>
         <Image src="/rider.png" alt="" width={80} height={100}/>
@@ -42,9 +58,11 @@ function page() {
         <button className='outline-none p-2'><MdBookmark className='border-[1px] border-[#adadad] rounded-md text-[25px] p-1 text-[#731CEB]'/></button>  
         </div>  
         </div>
+        </CarouselItem>
         {/* --------- Feature Section [End] ---------- */}
-        {/* --------- Feature Section [Start] ---------- */}
-        <div className='flex justify-between border-[#dadada] border-[2px] rounded-lg gap-1 my-2'>
+    <CarouselItem className="basis-1/4">
+      {/* --------- Feature Section [Start] ---------- */}
+      <div className='flex justify-between border-[#dadada] border-[2px] rounded-lg gap-1 my-2'>
         <Image src="/rider.png" alt="" width={80} height={100}/>
         <div className='space-y-1'><h3 className='text-[14px]'>Horses in two lines</h3>
          <span className='flex items-center text-[12px] text-[#8a8a8a]'><TbCurrentLocation/> Bull Ring</span> 
@@ -55,8 +73,10 @@ function page() {
         </div>  
         </div>
         {/* --------- Feature Section [End] ---------- */}
-        {/* --------- Feature Section [Start] ---------- */}
-        <div className='flex justify-between border-[#dadada] border-[2px] rounded-lg gap-1 my-2'>
+    </CarouselItem>
+    <CarouselItem className="basis-1/4">
+    {/* --------- Feature Section [Start] ---------- */}
+<div className='flex justify-between border-[#dadada] border-[2px] rounded-lg gap-1 my-2'>
         <Image src="/rider.png" alt="" width={80} height={100}/>
         <div className='space-y-1'><h3 className='text-[14px]'>Underground bull riders Membership</h3>
          <span className='flex items-center text-[12px] text-[#8a8a8a]'><TbCurrentLocation/> Bull Ring</span> 
@@ -67,8 +87,10 @@ function page() {
         </div>  
         </div>
         {/* --------- Feature Section [End] ---------- */}
-        {/* --------- Feature Section [Start] ---------- */}
-        <div className='flex justify-between border-[#dadada] border-[2px] rounded-lg gap-1 my-2'>
+    </CarouselItem>
+    <CarouselItem className="basis-1/4">
+     {/* --------- Feature Section [Start] ---------- */}
+     <div className='flex justify-between border-[#dadada] border-[2px] rounded-lg gap-1 my-2'>
         <Image src="/rider.png" alt="" width={80} height={100}/>
         <div className='space-y-1'><h3 className='text-[14px]'>Horses in two lines</h3>
          <span className='flex items-center text-[12px] text-[#8a8a8a]'><TbCurrentLocation/> Bull Ring</span> 
@@ -78,9 +100,27 @@ function page() {
         <button className='outline-none p-2'><CiBookmark className='border-[1px] border-[#adadad] rounded-md text-[25px] p-1 text-[#731CEB]'/></button>  
         </div>  
         </div>
+        {/* --------- Feature Section [End] ---------- */}
+    </CarouselItem>
+    <CarouselItem className="basis-1/4">
+     {/* --------- Feature Section [Start] ---------- */}
+     <div className='flex justify-between border-[#dadada] border-[2px] rounded-lg gap-1 my-2'>
+        <Image src="/rider.png" alt="" width={80} height={100}/>
+        <div className='space-y-1'><h3 className='text-[14px]'>Horses in two lines</h3>
+         <span className='flex items-center text-[12px] text-[#8a8a8a]'><TbCurrentLocation/> Bull Ring</span> 
+         <span className='flex items-center text-[12px] text-[#8a8a8a]'><MdDateRange/> Jan 1 - Dec 31,2...</span> 
+        </div>
+        <div>
+        <button className='outline-none p-2'><CiBookmark className='border-[1px] border-[#adadad] rounded-md text-[25px] p-1 text-[#731CEB]'/></button>  
+        </div>  
         </div>
         {/* --------- Feature Section [End] ---------- */}
-    
+    </CarouselItem>
+    </CarouselContent>
+      <CarouselPrevious />
+    <CarouselNext />
+  </Carousel>
+
       <div className='flex p-3 gap-3'>
       <div>
         <button className='px-2 py-1 border-[1px] border-[#dbdbdb] text-[14px] rounded-l-md bg-[#e9e9e9]'>All</button>
@@ -124,8 +164,6 @@ function page() {
       })
     }
     </div>
-
-    
     </div>
     </>
   )
