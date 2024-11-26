@@ -13,7 +13,7 @@ import { RiUserSettingsLine } from 'react-icons/ri';
 
 function Sidebar() {
   return (
-    <div className='bg-[#F7F7F9] py-4 text-white h-screen shadow-r-lg fixed top-0 w-[270px] p-4'>
+    <div className='bg-[#F7F7F9] py-4 text-white h-screen shadow-r-lg p-4'>
         <div className='flex justify-between items-center'>
             <Image src="/Purple logo.png" alt="" width={100} height={100}/>
             <button className='flex items-center bg-white rounded-full relative p-2 shadow-sm'>

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CiBookmark } from 'react-icons/ci';
 import { FaSearch } from 'react-icons/fa';
+import { ImSpinner8 } from "react-icons/im";
 import { MdBookmark, MdDateRange} from 'react-icons/md';
 import { TbCurrentLocation } from 'react-icons/tb';
 import data from '../components/data';
@@ -10,15 +11,9 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { Button } from '@/components/ui/button';
 import Autoplay from 'embla-carousel-autoplay';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-
-
+import {Carousel,CarouselContent,CarouselItem,CarouselNext,CarouselPrevious} from "@/components/ui/carousel";
+import {Select,SelectContent,SelectItem,SelectTrigger,SelectValue} from "@/components/ui/select"
+import { DatePickerDemo } from '@/components/ui/datePicker';
 
 
 function page() {
@@ -40,7 +35,8 @@ function page() {
       </div>
         <h3 className='text-[22px] font-semibold p-3'>Feature Events</h3>
 
-      <Carousel plugins={[
+        {/* --------- Feature Carousel [Start] ---------- */}
+      <Carousel className="mx-3" plugins={[
         Autoplay({
           delay: 2000,
         }),
@@ -120,23 +116,29 @@ function page() {
       <CarouselPrevious />
     <CarouselNext />
   </Carousel>
+        {/* --------- Feature Carosal [End] ---------- */}
 
       <div className='flex p-3 gap-3'>
       <div>
-        <button className='px-2 py-1 border-[1px] border-[#dbdbdb] text-[14px] rounded-l-md bg-[#e9e9e9]'>All</button>
-        <button className='px-2 py-1 border-[1px] border-[#dbdbdb] text-[14px] '>Live</button>
-        <button className='px-2 py-1 border-[1px] border-[#dbdbdb] text-[14px] rounded-r-md'>Upcoming</button>
+        <Button variant="secondary">All</Button>
+        <Button variant="secondary">Live</Button>
+        <Button variant="secondary">Upcoming</Button>
       </div>
       <div>
-      <select className='px-2 py-1 border-[1px] border-[#dbdbdb] text-[15px] rounded-md' name="" id="">
-      <option value="" disabled selected>Location</option>
-      <option value="Location-1">Location-1</option>
-      <option value="Location-2">Location-2</option>
-      <option value="Location-3">Location-3</option>
-    </select>
+      <Select>
+      <SelectTrigger className="w-[180px]">
+      <SelectValue placeholder="Theme" />
+      </SelectTrigger>
+      <SelectContent>
+      <SelectItem value="Location">Location</SelectItem>
+      <SelectItem value="Location 1">Location 1</SelectItem>
+      <SelectItem value="Location 2">Location 2</SelectItem>
+    </SelectContent>
+    </Select>
+
     </div>
       <div>
-      <input className='px-2 py-1 border-[1px] border-[#dbdbdb] text-[14px] rounded-md' type="date" placeholder='Event Date'/>
+        <DatePickerDemo/>
     </div>
       <div className='flex items-center px-2 py-1 border-[1px] border-[#dbdbdb] text-[14px] rounded-md gap-2'>
       <FaSearch className='text-[18px] text-[#3d3d3d]'/> 
@@ -146,9 +148,10 @@ function page() {
 
     <div className='p-3'>
     <div className='grid grid-cols-1 sm:grid-cols-2 gap-2'>
-      { data.filter((filterdata:any)=> filterdata.title.toLowerCase().includes(search)).map((dataValue:any)=>{
+      {data.filter((filterdata:any)=> filterdata.title.toLowerCase().includes(search)).map((dataValue:any)=> {
            return ( 
           <div key={dataValue.id}>
+        <div className='flex justify-between gap-3'>
         <div className='flex items-center gap-3'>
         <div className='bg-[#e9e9e9] py-1 px-3 rounded-md text-center'>
           <h3 className='text-[purple] text-[14px] font-semibold'>{dataValue.month}</h3>
@@ -157,6 +160,7 @@ function page() {
         <div>
           <h3 className='font-semibold'>{dataValue.title}</h3>
           <p className='text-[gray] text-[14px]'>{dataValue.description}</p>
+        </div>
         </div>
         <button onClick={()=>ActiveMark(dataValue.id)} className='outline-none p-2'>{ !bookmark[dataValue.id] ? <CiBookmark className='border-[1px] border-[#adadad] rounded-md text-[25px] p-1 text-[#731CEB]'/> :<MdBookmark className='border-[1px] border-[#adadad] rounded-md text-[25px] p-1 text-[#731CEB]'/>}</button>  
       </div>
